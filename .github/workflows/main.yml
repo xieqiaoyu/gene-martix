@@ -53,5 +53,5 @@ jobs:
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file_glob: true
-          file: ./artifact/${BIN_NAME}*
+          file: ./artifact/*
           tag: ${{ github.ref }}
