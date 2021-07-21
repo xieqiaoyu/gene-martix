@@ -42,7 +42,7 @@ jobs:
       - name: Build Binary
         run: |
           GO_MODULE_NAME=$(go list -m)
-          go build -trimpath -ldflags "-X '${GO_MODULE_NAME}/metadata.Name=${BIN_NAME}' -X '${GO_MODULE_NAME}/metadata.Version=${{ github.ref }}' -X '${GO_MODULE_NAME}/metadata.Platform=${GOOS}/${GOARCH}' -s -w" -o artifact/${BIN_NAME}_${GOOS}_${GOARCH} .
+          go build -trimpath -ldflags "-X '${GO_MODULE_NAME}/metadata.Name=${BIN_NAME}' -X '${GO_MODULE_NAME}/metadata.Version=${{ github.event.release.tag_name }}' -X '${GO_MODULE_NAME}/metadata.Platform=${GOOS}/${GOARCH}' -s -w" -o artifact/${BIN_NAME}_${GOOS}_${GOARCH} .
       - name: Windows Rename
         if: matrix.goos == 'windows'
         run: |
